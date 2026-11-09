@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Inteligente - Iluminação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="painel" id="painelControl">
+        <h2>Minha Casa Inteligente</h2>
+
+        <!-- JPEG: Fotografia da sala -->
+        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=600&q=80" class="foto" alt="Sala de estar">
+
+        <!-- SVG: Ícone vetorial da lâmpada -->
+        <br>
+        <img src="https://www.svgrepo.com/show/533299/lightbulb.svg" class="icone" id="iconeLampada" alt="Ícone de lâmpada">
+
+        <h1>Luz da sala</h1>
+
+        <button id="btnAcao" onclick="alternarLuz()">Ligar luz</button>
+
+        <p id="resultado">Luz desligada</p>
+    </div>
+
+    <script>
+        // Variável de controle do estado da luz
+        let luzLigada = false;
+
+        function alternarLuz() {
+            const body = document.body;
+            const painel = document.getElementById("painelControl");
+            const botao = document.getElementById("btnAcao");
+            const textoStatus = document.getElementById("resultado");
+
+            // Inverte o estado da lâmpada
+            luzLigada = !luzLigada;
+
+            if (luzLigada) {
+                // Ativa a iluminação no corpo da página e no painel
+                body.classList.add("luz-acesa");
+                painel.classList.add("luz-acesa");
+                
+                botao.innerHTML = "Desligar luz";
+                botao.style.background = "#e11d48";
+                botao.style.color = "#ffffff";
+                textoStatus.innerHTML = "💡 Luz ligada (Baixa voltagem)";
+                textoStatus.style.color = "#fef08a";
+            } else {
+                // Retorna ao estado de penumbra
+                body.classList.remove("luz-acesa");
+                painel.classList.remove("luz-acesa");
+                
+                botao.innerHTML = "Ligar luz";
+                botao.style.background = "#d97706";
+                botao.style.color = "#ffffff";
+                textoStatus.innerHTML = "Luz desligada";
+                textoStatus.style.color = "#64748b";
+            }
+        }
+    </script>
+</body>
+</html>
